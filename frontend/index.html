@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QuickDrop - share files with temporary download links.">
+  <title>QuickDrop | Temporary File Sharing</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-icon">Q</span>
+      <span>QuickDrop</span>
+    </a>
+    <span class="tagline">Temporary file sharing</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <div class="eyebrow">FAST · SIMPLE · TEMPORARY</div>
+      <h1>Share files.<br><span>Not limits.</span></h1>
+      <p>Upload a file, get a secure link, and share it with anyone. Your file disappears when its time is up.</p>
+    </section>
+
+    <section class="upload-card">
+      <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Choose or drop a file">
+        <div class="upload-icon">↑</div>
+        <h2>Drop your file here</h2>
+        <p>or <button id="browseButton" class="text-button" type="button">browse files</button></p>
+        <small>Maximum file size: 50 MB</small>
+        <input id="fileInput" type="file" hidden>
+      </div>
+
+      <div id="selectedFile" class="selected-file hidden">
+        <div class="file-symbol">FILE</div>
+        <div class="file-details">
+          <strong id="fileName"></strong>
+          <small id="fileSize"></small>
+        </div>
+        <button id="removeFile" class="remove-button" type="button" aria-label="Remove file">×</button>
+      </div>
+
+      <label class="field-label" for="expirySelect">Link expires after</label>
+      <select id="expirySelect">
+        <option value="1">1 hour</option>
+        <option value="6">6 hours</option>
+        <option value="24" selected>24 hours</option>
+        <option value="168">7 days</option>
+      </select>
+
+      <button id="uploadButton" class="primary-button" type="button" disabled>Upload file</button>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div id="progressWrap" class="progress-wrap hidden">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </section>
+
+    <section id="resultCard" class="result-card hidden">
+      <div class="success-icon">✓</div>
+      <h2>Your link is ready!</h2>
+      <p id="resultFileName" class="result-filename"></p>
+      <div class="link-row">
+        <input id="shareLink" type="text" readonly aria-label="Share link">
+        <button id="copyButton" class="secondary-button" type="button">Copy link</button>
+      </div>
+      <p id="expiryText" class="expiry-text"></p>
+      <a id="openLink" class="download-link" href="#" target="_blank" rel="noopener">Open download page ↗</a>
+    </section>
+  </main>
+
+  <footer>QuickDrop · Share simply. Expire automatically.</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
